@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,16 +27,25 @@ class Country
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
 
     /**
      * @var string
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Region", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="Region", mappedBy="country")
      */
     private $regions;
 
+    public function __construct()
+    {
+        $this->regions=new ArrayCollection();
+    }
+
+    public function __toString(){
+    return $this->getName();
+}
 
     /**
      * Get id
@@ -72,5 +83,38 @@ class Country
 
 
 
-}
 
+    /**
+     * Add region
+     *
+     * @param \AppBundle\Entity\Region $region
+     *
+     * @return Country
+     */
+    public function addRegion(\AppBundle\Entity\Region $region)
+    {
+        $this->regions[] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Remove region
+     *
+     * @param \AppBundle\Entity\Region $region
+     */
+    public function removeRegion(\AppBundle\Entity\Region $region)
+    {
+        $this->regions->removeElement($region);
+    }
+
+    /**
+     * Get regions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRegions()
+    {
+        return $this->regions;
+    }
+}

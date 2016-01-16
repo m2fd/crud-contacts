@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,12 +27,13 @@ class Region
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Country", inversedBy="regions")
-     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="fk_country_id", referencedColumnName="id")
      */
     private $country;
 
@@ -40,6 +43,14 @@ class Region
      */
     private $cities;
 
+    public function __construct()
+    {
+        $this->cities = new ArrayCollection();
+    }
+
+    public function __toString(){
+        return $this->getName();
+    }
     /**
      * Get id
      *
@@ -97,5 +108,63 @@ class Region
     {
         return $this->countryid;
     }
-}
 
+    /**
+     * Set country
+     *
+     * @param \AppBundle\Entity\Country $country
+     *
+     * @return Region
+     */
+    public function setCountry(\AppBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \AppBundle\Entity\Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Add city
+     *
+     * @param \AppBundle\Entity\City $city
+     *
+     * @return Region
+     */
+    public function addCity(\AppBundle\Entity\City $city)
+    {
+        $this->cities[] = $city;
+
+        return $this;
+    }
+
+    /**
+     * Remove city
+     *
+     * @param \AppBundle\Entity\City $city
+     */
+    public function removeCity(\AppBundle\Entity\City $city)
+    {
+        $this->cities->removeElement($city);
+    }
+
+    /**
+     * Get cities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+}

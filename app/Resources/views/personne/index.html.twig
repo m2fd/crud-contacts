@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Personne list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Birthdate</th>
+                <th>City</th>
+                <th>Region</th>
+                <th>Country</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personne in personnes %}
+            <tr>
+                <td><a href="{{ path('personne_show', { 'id': personne.id }) }}">{{ personne.id }}</a></td>
+                <td>{{ personne.firstname }}</td>
+                <td>{{ personne.lastname }}</td>
+                <td>{% if personne.birthDate %}{{ personne.birthDate|date('d-M-Y') }}{% endif %}</td>
+                <td>{{ personne.city }}</td>
+                <td>{{ personne.city.region }}</td>
+                <td>{{ personne.city.region.country }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('personne_show', { 'id': personne.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('personne_edit', { 'id': personne.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('personne_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

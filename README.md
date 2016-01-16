@@ -10,7 +10,20 @@ php bin/console doctrine:database:create
 
 php bin/console doctrine:schema:update --force
 
-php app/console generate:doctrine:crud
+## Generate Getters/setters
+php bin/console doctrine:generate:entities AppBundle:Country
+php bin/console doctrine:generate:entities AppBundle:Region
+php bin/console doctrine:generate:entities AppBundle:City
+php bin/console doctrine:generate:entities AppBundle:Personne
+php bin/console doctrine:generate:entities AppBundle
+
+
+## Generate controllers
+php bin/console generate:doctrine:crud --overwrite --with-write  --format=annotation --entity=AppBundle:Country
+php bin/console generate:doctrine:crud --overwrite --with-write  --format=annotation --entity=AppBundle:Region
+php bin/console generate:doctrine:crud --overwrite --with-write  --format=annotation --entity=AppBundle:City
+php bin/console generate:doctrine:crud --overwrite --with-write  --format=annotation --entity=AppBundle:Personne
+
 
 ##start server
 php bin/console server:run
