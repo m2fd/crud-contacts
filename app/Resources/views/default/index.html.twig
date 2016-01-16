@@ -3,9 +3,20 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <div id="welcome">
-                <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
-            </div>
+
+        <h1>Projet PHP: carnet d'adresses</h1>
+            <table class="table .striped table">
+                <thead><td>
+                    Listes de objets
+                </td></thead>
+                <tbody>
+                <tr><td><a href="country">country</a></td></tr>
+                <tr><td><a href="region">region</a></td></tr>
+                <tr><td><a href="city">city</a></td></tr>
+                <tr><td><a href="personne">personne</a></td></tr>
+                </tbody>
+            </table>
+
 
             <div id="status">
                 <p>
@@ -40,6 +51,9 @@
                         How to create your first page in Symfony
                     </a>
                 </p>
+            </div>
+            <div id="powered">
+                <h6><span>powered by</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h6>
             </div>
 
         </div>
