@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>firm list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for firm in firms %}
+            <tr>
+                <td><a href="{{ path('firm_show', { 'id': firm.id }) }}">{{ firm.id }}</a></td>
+                <td>{{ firm.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('firm_show', { 'id': firm.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('firm_edit', { 'id': firm.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('firm_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -23,6 +23,7 @@ php bin/console generate:doctrine:crud --overwrite --with-write  --format=annota
 php bin/console generate:doctrine:crud --overwrite --with-write  --format=annotation --entity=AppBundle:Region
 php bin/console generate:doctrine:crud --overwrite --with-write  --format=annotation --entity=AppBundle:City
 php bin/console generate:doctrine:crud --overwrite --with-write  --format=annotation --entity=AppBundle:Personne
+php bin/console generate:doctrine:crud --overwrite --with-write  --format=annotation --entity=AppBundle:Firm
 
 
 ##start server

@@ -21,6 +21,22 @@
                 <th>Birthdate</th>
                 <td>{% if personne.birthDate %}{{ personne.birthDate|date('Y-m-d') }}{% endif %}</td>
             </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ personne.email }}</td>
+            </tr>
+            <tr>
+                <th>Tels</th>
+                <td>{{ personne.tels }}</td>
+            </tr>
+            <tr>
+                <th>Website</th>
+                <td>{{ personne.webSite }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ personne.status }}</td>
+            </tr>
         </tbody>
     </table>
 

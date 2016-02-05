@@ -31,6 +31,22 @@ class AppKernel extends Kernel
     public function getRootDir()
     {
         return __DIR__;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     public function getCacheDir()
