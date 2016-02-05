@@ -106,6 +106,9 @@ fabric.properties
 /web/css/
 /web/js/
 
+### Temp file ###
+*php~
+*~
 
 ### Sass ###
 .sass-cache/
