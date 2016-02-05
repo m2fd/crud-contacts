@@ -14,6 +14,7 @@ php bin/console doctrine:schema:update --force
 php bin/console doctrine:generate:entities AppBundle:Country
 php bin/console doctrine:generate:entities AppBundle:Region
 php bin/console doctrine:generate:entities AppBundle:City
+php bin/console doctrine:generate:entities AppBundle:Firm
 php bin/console doctrine:generate:entities AppBundle:Personne
 php bin/console doctrine:generate:entities AppBundle
 

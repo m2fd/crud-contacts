@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class firmType extends AbstractType
+class FirmType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -25,7 +25,7 @@ class firmType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\firm'
+            'data_class' => 'AppBundle\Entity\Firm'
         ));
     }
 }

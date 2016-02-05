@@ -12,8 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 
-Type::addType('enumstatus', 'AppBundle\DBAL\EnumStatusType');
-
 /**
  * Entity of personne, main object of the address book. it has links to other object through a relationnal database
  * defined in the code (ORM annotation). Also expected values, or validation conditions are defined with Assert
@@ -77,12 +75,12 @@ class Personne
     /**
      * @var integer
      *
-     * @ORM\Column(name="tels", type="integer", length=10)
+     * @ORM\Column(name="telephone", type="integer", length=10)
      */
-    protected $tels;
+    protected $telephone;
 
     /**
-     * @ORM\ManyToOne(targetEntity="firm")
+     * @ORM\ManyToOne(targetEntity="Firm")
      * @ORM\JoinColumn(name="firm_id", referencedColumnName="id")
      */
     protected $firm;
@@ -99,10 +97,13 @@ class Personne
      */
     protected $webSite;
 
+    const STATUS_PRO = 'professionnel';
+    const STATUS_PART = 'particulier';
+
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string",  type="enumstatus")
+     * @ORM\Column(name="status", type="string")
      *
      */
     protected $status;
@@ -242,27 +243,27 @@ class Personne
     }
 
     /**
-     * Set tels
+     * Set telephone
      *
-     * @param integer $tels
+     * @param integer $telephone
      *
      * @return Personne
      */
-    public function setTels($tels)
+    public function setTelephone($telephone)
     {
-        $this->tels = $tels;
+        $this->telephone = $telephone;
 
         return $this;
     }
 
     /**
-     * Get tels
+     * Get telephone
      *
      * @return integer
      */
-    public function getTels()
+    public function getTelephone()
     {
-        return $this->tels;
+        return $this->telephone;
     }
 
     /**
@@ -292,11 +293,11 @@ class Personne
     /**
      * Set firm
      *
-     * @param \AppBundle\Entity\firm $firm
+     * @param \AppBundle\Entity\Firm $firm
      *
      * @return Personne
      */
-    public function setFirm(\AppBundle\Entity\firm $firm = null)
+    public function setFirm(\AppBundle\Entity\Firm $firm = null)
     {
         $this->firm = $firm;
 
@@ -322,8 +323,10 @@ class Personne
      */
     public function setStatus($status)
     {
+        if (!in_array($status, array(self::STATUS_VISIBLE, self::STATUS_INVISIBLE))) {
+            throw new \InvalidArgumentException("Invalid status");
+        }
         $this->status = $status;
-
         return $this;
     }
 
