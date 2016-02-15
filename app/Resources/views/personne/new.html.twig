@@ -3,14 +3,30 @@
 {% block body %}
     <h1>Personne creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+
+    <div class="col-md-3 col-sm-3 col-xs-12">
+        {{ form_start(form) }}
+        {{ form_widget(form.firstname, {'attr': {'class': 'form-control', 'placeholder':'firstname'}}) }}<br>
+        {{ form_widget(form.lastname, {'attr': {'class': 'form-control', 'placeholder':'lastname'}}) }}<br>
+        {{ form_widget(form.birthDate, {'attr': {'class': 'form-control', 'placeholder':'BirthDate' }}) }}<br>
+        {{ form_widget(form.city, {'attr': {'class': 'form-control', 'placeholder':'City' }}) }}<br>
+        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder':'email' }}) }}<br></div>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+        {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder':'telephone' }}) }}<br>
+        {{ form_widget(form.webSite, {'attr': {'class': 'form-control', 'placeholder':'website' }}) }}<br>
+        {{ form_widget(form.status, {'attr': {'class': 'form-control', 'placeholder':'website' }}) }}<br>
+        {{ form_widget(form.firm, {'attr': {'class': 'form-control', 'placeholder':'website' }}) }}<br>
+        <input class="btn btn-med btn-primary btn-block" type="submit" value="Create"/>
+    </div>
+
+
     {{ form_end(form) }}
 
+    <div class="col-md-12 col-sm-12 col-xs-12">
     <ul>
         <li>
             <a href="{{ path('personne_index') }}">Back to the list</a>
         </li>
     </ul>
+        </div>
 {% endblock %}

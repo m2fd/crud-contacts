@@ -3,7 +3,8 @@
 {% block body %}
     <h1>Personne list</h1>
 
-    <table>
+    <div class="table-responsive">
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -27,7 +28,7 @@
                 <td>{{ personne.email }}</td>
                 <td>{{ personne.telephone }}</td>
                 <td>{{ personne.webSite }}</td>
-                <td>{{ personne.status }}</td>
+                <td>{{ personne.status  }} </td>
                 <td>
                     <ul>
                         <li>
@@ -36,16 +37,23 @@
                         <li>
                             <a href="{{ path('personne_edit', { 'id': personne.id }) }}">edit</a>
                         </li>
+                        <li>
+                            <a href="{{ path('personne_delete', { 'id': personne.id }) }}">delete</a>
+                        </li>
                     </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+        </div>
 
     <ul>
         <li>
             <a href="{{ path('personne_new') }}">Create a new entry</a>
+        </li>
+        <li>
+            <a href="/">Index</a>
         </li>
     </ul>
 {% endblock %}

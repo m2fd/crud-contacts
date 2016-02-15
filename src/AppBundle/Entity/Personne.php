@@ -53,7 +53,7 @@ class Personne
     protected $birthDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="City")
+     * @ORM\ManyToOne(targetEntity="City",inversedBy="personnes")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     protected $city;
@@ -104,12 +104,12 @@ class Personne
      * @var string
      *
      * @ORM\Column(name="status", type="string")
-     *
+     * Assert\NotBlank()
      */
     protected $status;
 
     public function __toString(){
-        return $this->getLastname()+" "+$this->getFirstname();
+        return $this->getLastname()." ".$this->getFirstname();
     }
 
     /**
@@ -323,11 +323,13 @@ class Personne
      */
     public function setStatus($status)
     {
-        if (!in_array($status, array(self::STATUS_VISIBLE, self::STATUS_INVISIBLE))) {
-            throw new \InvalidArgumentException("Invalid status");
+        print_r($status);
+        if (!in_array($status, array("1","2"))) {
+            //throw new \InvalidArgumentException("Invalid status, expected 1 or 2, got "+ $status);
         }
-        $this->status = $status;
-        return $this;
+        if ($status== '1'){$this->status = self::STATUS_PART;}
+        if ($status== '2'){$this->status = self::STATUS_PRO;}
+
     }
 
     /**

@@ -3,12 +3,13 @@
 {% block body %}
     <h1>Personne</h1>
 
-    <table>
+    <div class="table-responsive ">
+    <table class="table .table-condensed">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ personne.id }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ personne.id }}</td>
+        </tr>
             <tr>
                 <th>Firstname</th>
                 <td>{{ personne.firstname }}</td>
@@ -35,10 +36,11 @@
             </tr>
             <tr>
                 <th>Status</th>
-                <td>{{ personne.status }}</td>
+                <td>{{ personne.status}} </td>
             </tr>
         </tbody>
     </table>
+</div>
 
     <ul>
         <li>

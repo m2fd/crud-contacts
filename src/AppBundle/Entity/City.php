@@ -38,6 +38,12 @@ class City
      */
     private $region;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Personne", mappedBy="city")
+     */
+    protected $personnes;
+
+
     public function __toString(){
         return $this->getName();
     }
@@ -99,4 +105,8 @@ class City
     {
         return $this->region;
     }
+
+//    public function getCity(){
+//        return $this->getDoctrine()->getRepository("appBundle:City")->findAll;
+//    }
 }

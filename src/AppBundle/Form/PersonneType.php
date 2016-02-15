@@ -2,11 +2,14 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\Url;
 
 class PersonneType extends AbstractType
 {
@@ -19,37 +22,29 @@ class PersonneType extends AbstractType
         $builder
             ->add('firstname')
             ->add('lastname')
-            ->add('birthDate', DateType::class)
-            ->add('email')
+            ->add('birthDate', DateType::class,['widget' => 'single_text', 'format' => 'dd-MM-yyyy','attr' => [
+                                'class' => 'form-control input-inline datepicker',
+                                'data-provide' => 'datepicker',
+                                'data-date-format' => 'dd-mm-yyyy']
+                    ])
+            ->add('email',EmailType::class)
             ->add('telephone')
             ->add('webSite')
             ->add('status',ChoiceType::class, array(
                 'choices'  => array(
                     'Choisissez votre status' => null,
-                    'Particulier' => true,
-                    'Professionnel' => false,
+                    'Particulier' => 'particulier',
+                    'Professionnel' => 'professionnel',
                 ),
                 // *this line is important*
-                'choices_as_values' => true,
+                'choices_as_values' => true
             ))
-            ->add('city',ChoiceType::class, array(
-                'choices'  => array(
-                    'Choisissez votre ville' => null,
-                    'Particulier' => true,
-                    'Professionnel' => false,
-                ),
-                // *this line is important*
-                'choices_as_values' => true,
-            ))
-            ->add('firm',ChoiceType::class, array(
-                'choices'  => array(
-                    'Choisissez votre société' => null,
-                    'Particulier' => true,
-                    'Professionnel' => false,
-                ),
-                // *this line is important*
-                'choices_as_values' => true,
-            ))
+            ->add('city',EntityType::class, array(
+                'class' => 'AppBundle:City',
+        //'choice_label' => 'city',
+        ))
+            ->add('firm',EntityType::class,array(
+                'class' => 'AppBundle:Firm',))
         ;
     }
     

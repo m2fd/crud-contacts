@@ -88,11 +88,15 @@ class PersonneController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            dump($personne);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($personne);
             $em->flush();
 
             return $this->redirectToRoute('personne_edit', array('id' => $personne->getId()));
+            #return $this->redirectToRoute('personne_index', array('id' => $personne->getId()));
         }
 
         return $this->render('personne/edit.html.twig', array(
