@@ -16,3 +16,7 @@ services:
         class: AppBundle\EventListener\logEntity
         tags:
             - { name: doctrine.event_listener, event: postPersist }
+
+#    sw.mailer:
+#        class:     AppBundle\Mailer\swMailer
+#        arguments: [mailer]

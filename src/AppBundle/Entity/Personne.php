@@ -10,6 +10,7 @@ namespace AppBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 
 /**
@@ -339,4 +340,23 @@ class Personne
     {
         return $this->status;
     }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getNamedStatus()
+    {
+        switch($this->status){
+            case "1":
+                return self::STATUS_PART;
+                break;
+            case "2":
+                return self::STATUS_PRO;
+            break;
+        };
+        return 'Not defined';
+    }
+
 }

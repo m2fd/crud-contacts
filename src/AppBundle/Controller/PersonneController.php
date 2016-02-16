@@ -4,10 +4,8 @@ namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Personne;
-use AppBundle\Form\PersonneType;
+
 
 /**
  * Personne controller.
@@ -27,6 +25,7 @@ class PersonneController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $personnes = $em->getRepository('AppBundle:Personne')->findAll();
+
 
         return $this->render('personne/index.html.twig', array(
             'personnes' => $personnes,
@@ -50,6 +49,8 @@ class PersonneController extends Controller
             $em->persist($personne);
             $em->flush();
 
+            $this->sendMail('new',$personne);
+
             return $this->redirectToRoute('personne_show', array('id' => $personne->getId()));
         }
 
@@ -57,6 +58,45 @@ class PersonneController extends Controller
             'personne' => $personne,
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * @param Personne $personne
+     *
+     *
+     */
+    public function sendMail(String $action,Personne $personne){
+
+        $mailer = $this->get('mailer');
+        #$mailer->setMailer('smtp');
+        #$mailer->send('no-reply@localhost', $personne->getEmail(),  'Information: '.$action,
+        #    'A new user named'.$personne->getFirstname()." ".$personne->getLastname());
+        $template = 'Emails/newuser.html.twig';
+
+        if ($action=="edit")$template='Emails/edituser.html.twig';
+
+         $message = \Swift_Message::newInstance()
+             ->setSubject('Information: '.$action)
+             ->setFrom('no-reply@localhost')
+             ->setTo('user@localhost')
+             ->setBody(
+                 $this->renderView(
+                     // app/Resources/views/Emails/registration.html.twig
+                     $template,
+                     array('name' => $personne->getFirstname()." ".$personne->getLastname(),
+                         'city' => $personne->getCity(),
+                         'firm' => $personne->getFirm(),
+                         'bdate' => $personne->getBirthDate()->format('d/m/Y'),
+                         'status' => $personne->getNamedStatus(),
+                         'phone'=> $personne->getTelephone(),
+                         'website' =>$personne->getWebSite()
+                         )
+                 ),
+                 'text/html'
+             )
+                 #'A new user named '.$personne->getFirstname()." ".$personne->getLastname(). " was created")
+        ;
+        $mailer->send($message);
     }
 
     /**
@@ -105,6 +145,8 @@ class PersonneController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($personne);
             $em->flush();
+
+            $this->sendMail('edit',$personne);
 
             #return $this->redirectToRoute('personne_edit', array('id' => $personne->getId()));
             return $this->redirectToRoute('personne_index', array('id' => $personne->getId()));
