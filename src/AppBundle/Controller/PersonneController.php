@@ -83,20 +83,31 @@ class PersonneController extends Controller
      */
     public function editAction(Request $request, Personne $personne)
     {
+        $logger = $this->get('logger');
         $deleteForm = $this->createDeleteForm($personne);
         $editForm = $this->createForm('AppBundle\Form\PersonneType', $personne);
         $editForm->handleRequest($request);
 
+        dump($this->container,$personne);
+
+        $logger->addDebug("form is valid: ".($editForm->isValid()));
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-            dump($personne);
+
+            // data is an array with "name", "email", and "message" keys
+            $data = $editForm->getData();
+            $logger->addDebug("req post Status: ".$request->request->get('personne[status]'));
+            $logger->addDebug("req get data: ".$data);
+
+            #$personne->setStatus($request->request->get('personne[status]'));
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($personne);
             $em->flush();
 
-            return $this->redirectToRoute('personne_edit', array('id' => $personne->getId()));
-            #return $this->redirectToRoute('personne_index', array('id' => $personne->getId()));
+            #return $this->redirectToRoute('personne_edit', array('id' => $personne->getId()));
+            return $this->redirectToRoute('personne_index', array('id' => $personne->getId()));
         }
 
         return $this->render('personne/edit.html.twig', array(

@@ -32,12 +32,24 @@
             </tr>
             <tr>
                 <th>Website</th>
-                <td>{{ personne.webSite }}</td>
+                <td><a href="{{ personne.webSite }}">{{ personne.webSite }}</a></td>
             </tr>
             <tr>
                 <th>Status</th>
-                <td>{{ personne.status}} </td>
+                <td>{% if personne.status == 1 %} Particulier {% endif %}{% if personne.status == 2 %} Professionnel {% endif %} </td>
             </tr>
+        <tr>
+            <th>City</th>
+            <td>{{   personne.city }} </td>
+        </tr>
+        <tr>
+            <th>Region</th>
+            <td>{{   personne.city.region }} </td>
+        </tr>
+        <tr>
+            <th>Country</th>
+            <td>{{   personne.city.region.country }} </td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -51,7 +63,7 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input class="btn btn-med btn-primary" type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

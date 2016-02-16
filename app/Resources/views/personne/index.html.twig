@@ -27,8 +27,8 @@
                 <td>{% if personne.birthDate %}{{ personne.birthDate|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ personne.email }}</td>
                 <td>{{ personne.telephone }}</td>
-                <td>{{ personne.webSite }}</td>
-                <td>{{ personne.status  }} </td>
+                <td><a href="{{ personne.webSite }}">{{ personne.webSite }}</a></td>
+                <td>{% if personne.status == 1 %} Particulier {% endif %}{% if personne.status == 2 %} Professionnel {% endif %}</td>
                 <td>
                     <ul>
                         <li>

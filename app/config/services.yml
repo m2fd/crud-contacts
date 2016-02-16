@@ -11,3 +11,8 @@ services:
     user_register:
         class: AppBundle\User\Register
         arguments: [ '@logger' ]
+
+    my.listener:
+        class: AppBundle\EventListener\logEntity
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }

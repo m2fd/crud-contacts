@@ -5,6 +5,7 @@
 
     <?php print_r(array_keys($edit_form)) />
 
+
     {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}<br>
 
@@ -26,14 +27,16 @@
 
     {{ form_end(edit_form) }}
 
+<div class="col-md-12 col-sm-12 col-xs-12">
     <ul>
         <li>
             <a href="{{ path('personne_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-med btn-primary " type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    </div>
 {% endblock %}

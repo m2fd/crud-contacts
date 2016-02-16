@@ -33,18 +33,21 @@ class PersonneType extends AbstractType
             ->add('status',ChoiceType::class, array(
                 'choices'  => array(
                     'Choisissez votre status' => null,
-                    'Particulier' => 'particulier',
-                    'Professionnel' => 'professionnel',
-                ),
+                    'Particulier' => '1',
+                    'Professionnel' => '2'),
+
                 // *this line is important*
                 'choices_as_values' => true
             ))
             ->add('city',EntityType::class, array(
                 'class' => 'AppBundle:City',
-        //'choice_label' => 'city',
+                'choice_label' => 'name',
         ))
             ->add('firm',EntityType::class,array(
-                'class' => 'AppBundle:Firm',))
+                'class' => 'AppBundle:Firm',
+                'choice_label' => function($firm){
+                    return strtoUpper($firm->getName());
+                },))
         ;
     }
     

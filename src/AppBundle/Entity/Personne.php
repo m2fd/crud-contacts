@@ -321,15 +321,13 @@ class Personne
      *
      * @return Personne
      */
-    public function setStatus($status)
+    public function setStatus(string $status)
     {
-        print_r($status);
-        if (!in_array($status, array("1","2"))) {
-            //throw new \InvalidArgumentException("Invalid status, expected 1 or 2, got "+ $status);
-        }
-        if ($status== '1'){$this->status = self::STATUS_PART;}
-        if ($status== '2'){$this->status = self::STATUS_PRO;}
 
+         if (!in_array($status, array("1","2"))) {
+            throw new \InvalidArgumentException("Invalid status, expected 1 or 2, got ".$status);
+        }
+        $this->status = $status;
     }
 
     /**
