@@ -1,0 +1,50 @@
+{# app/Resources/views/Emails/registration.html.twig #}
+<h3>You did it! You registered!</h3>
+
+<div class=".md3 .sm3">
+    <div class="table-responsive">
+        <table class="table .table-condensed">
+            <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ name }}</td>
+            </tr>
+            <tr>
+                <th>BirthDate</th>
+                <td>{{ bdate }}</td>
+            </tr>
+            <tr>
+                <th>city</th>
+                <td>{{ city }}</td>
+            </tr>
+            <tr>
+                <th>firm</th>
+                <td>{{ firm }}</td>
+            </tr>
+            <tr>
+                <th>phone</th>
+                <td>{{ phone }}</td>
+            </tr>
+            <tr>
+                <th>website</th>
+                <td>{{ website }}</td>
+            </tr>
+            <tr>
+                <th>status</th>
+                <td>{{ status }}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+{# example, assuming you have a route named "login" #}
+To login, go to: <a href="{{ url('personne_index') }}">...</a>.
+
+Thanks!
+
+{# Makes an absolute URL to the /images/logo.png file #}
+<img src="{{ absolute_url(asset('images/logo.png')) }}">
+
+</div>
