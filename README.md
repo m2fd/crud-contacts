@@ -9,26 +9,27 @@ Créez un carnet d'adresse sous forme d'application web à l'aide du framework S
 
 Il s'agit de réaliser une application de type CRUD (Create-Retrieve-Update-Delete) comprenant les fonctionnalités suivantes :
 
-    Liste de tous les contacts
-    Création d'un nouveau contact
-    Mise à jour d'un contact existant
-    Suppression d'un contact
-    La validation des données entrées pas l'utilisateur
+    Liste de tous les contacts                              OK
+    Création d'un nouveau contact                           OK
+    Mise à jour d'un contact existant                       OK
+    Suppression d'un contact                                OK
+    La validation des données entrées pas l'utilisateur     OK
 
 Un contact content au minimum les données suivantes :
 
-    nom (obligatoire)
-    prénom
-    société
-    adresse complète
-    numéro de téléphone
-    email (doit être un email valide)
-    site internet (doit être une URL valide)
-    particulier ou pro
+    nom (obligatoire)                                       OK
+    prénom                                                  OK
+    société                                                 OK (validation par selection de valeurs connues)
+    adresse complète                                        Ville, region, pays par trois entités associées.
+    numéro de téléphone                                     OK
+    email (doit être un email valide)                       OK (validation par check mxmail)
+    site internet (doit être une URL valide)                OK (validation par check dns)
+    particulier ou pro                                      OK (validation par restriction des valeurs acceptées)
 
 L'application devra utiliser le paradigme orienté objet.
 
 L'application pourra utiliser le système de persistence de votre choix (SGBD relationnel ; ou encore MongoDB).
+                                                            Doctrine + mysql
 
 L'application devra :
 
@@ -37,7 +38,7 @@ L'application devra :
     Respecter les conventions PSR-4, PSR-1 et PSR-2
     Disposer d'une PHPdoc de qualité
     La liste devra être paginée
-    Envoyer un email à l'administrateur du site lorsqu'un nouveau contact est ajouté (attention au respect de MVC !)
+    Envoyer un email à l'administrateur du site lorsqu'un nouveau contact est ajouté (attention au respect de MVC !)            envoi a user@localhost
     M'être rendue sous la forme d'un dépôt Git hébergé sur GitHub, BitBucket ou GitLab (gratuits)
 
 L'implémentation des fonctionnalités suivantes sera un plus :
