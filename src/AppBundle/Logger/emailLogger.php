@@ -26,7 +26,9 @@ class emailLogger implements Logger
     }
 
     /**
+     * function log send a message through email
      * @param $message
+     * @return mixed|void
      */
     public function log($message)
     {

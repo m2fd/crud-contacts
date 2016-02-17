@@ -26,7 +26,9 @@ class smsLogger implements Logger
     }
 
     /**
+     * log send message through sms text
      * @param $message
+     * @return mixed|void
      */
     public function log($message)
     {
