@@ -10,6 +10,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+/**
+ * Class PersonneType
+ * @package AppBundle\Form
+ */
 class PersonneType extends AbstractType
 {
     /**

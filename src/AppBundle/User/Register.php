@@ -10,10 +10,18 @@ namespace AppBundle\User;
 
 use Psr\Log\LoggerInterface;
 
+/**
+ * Class Register
+ * @package AppBundle\User
+ */
 class Register
 {
     private $logger;
     //public function __construct(LoggerInterface $logger){
+    /**
+     * Register constructor.
+     * @param LoggerInterface $logger
+     */
     public function __construct(LoggerInterface $logger)
     {
         $this->logger = $logger;
@@ -26,6 +34,10 @@ class Register
     }
 
     //public function createUser(string $user,string $password){
+    /**
+     * @param $user
+     * @param $password
+     */
     public function createUser($user, $password)
     {
 

@@ -42,11 +42,17 @@ class Region
      */
     private $cities;
 
+    /**
+     * Region constructor.
+     */
     public function __construct()
     {
         $this->cities = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getName();

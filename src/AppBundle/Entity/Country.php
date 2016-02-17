@@ -37,11 +37,17 @@ class Country
      */
     private $regions;
 
+    /**
+     * Country constructor.
+     */
     public function __construct()
     {
         $this->regions = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getName();

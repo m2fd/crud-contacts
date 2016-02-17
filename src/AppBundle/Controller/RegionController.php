@@ -40,6 +40,8 @@ class RegionController extends Controller
      *
      * @Route("/new", name="region_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -66,6 +68,8 @@ class RegionController extends Controller
      *
      * @Route("/{id}", name="region_show")
      * @Method("GET")
+     * @param Region $region
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Region $region)
     {
@@ -82,6 +86,9 @@ class RegionController extends Controller
      *
      * @Route("/{id}/edit", name="region_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Region $region
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Region $region)
     {
@@ -109,6 +116,9 @@ class RegionController extends Controller
      *
      * @Route("/{id}", name="region_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param Region $region
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Region $region)
     {

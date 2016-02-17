@@ -39,6 +39,8 @@ class CountryController extends Controller
      *
      * @Route("/new", name="country_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -65,6 +67,8 @@ class CountryController extends Controller
      *
      * @Route("/{id}", name="country_show")
      * @Method("GET")
+     * @param Country $country
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Country $country)
     {
@@ -81,6 +85,9 @@ class CountryController extends Controller
      *
      * @Route("/{id}/edit", name="country_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Country $country
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Country $country)
     {
@@ -108,6 +115,9 @@ class CountryController extends Controller
      *
      * @Route("/{id}", name="country_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param Country $country
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Country $country)
     {

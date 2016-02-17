@@ -15,12 +15,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class UserController
+ * @package AppBundle\Controller
+ */
 class UserController extends Controller
 {
     /**
      * @Route(path="/register2",name="user_register")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @return Response
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function registerAction(Request $request)

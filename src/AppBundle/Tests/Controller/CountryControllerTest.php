@@ -4,6 +4,10 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class CountryControllerTest
+ * @package AppBundle\Tests\Controller
+ */
 class CountryControllerTest extends WebTestCase
 {
     /*

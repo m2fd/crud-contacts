@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Personne;
@@ -12,6 +13,7 @@ use AppBundle\Entity\Personne;
  * Personne controller.
  *
  * @Route("/personne")
+ * @Security("has_role('ROLE_USER')")
  */
 class PersonneController extends Controller
 {
@@ -37,6 +39,9 @@ class PersonneController extends Controller
      *
      * @Route("/new", name="personne_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
@@ -61,6 +66,7 @@ class PersonneController extends Controller
     }
 
     /**
+     * @param String $action
      * @param Personne $personne
      */
     public function sendMail(String $action, Personne $personne)
@@ -104,6 +110,8 @@ class PersonneController extends Controller
      *
      * @Route("/{id}", name="personne_show")
      * @Method("GET")
+     * @param Personne $personne
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Personne $personne)
     {
@@ -120,6 +128,10 @@ class PersonneController extends Controller
      *
      * @Route("/{id}/edit", name="personne_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Personne $personne
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editAction(Request $request, Personne $personne)
     {
@@ -163,6 +175,9 @@ class PersonneController extends Controller
      *
      * @Route("/{id}", name="personne_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param Personne $personne
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Personne $personne)
     {

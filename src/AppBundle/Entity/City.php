@@ -41,6 +41,9 @@ class City
      */
     protected $personnes;
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getName();

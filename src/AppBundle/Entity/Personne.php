@@ -107,6 +107,9 @@ class Personne
      */
     protected $status;
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getLastname().' '.$this->getFirstname();

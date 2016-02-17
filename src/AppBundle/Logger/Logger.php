@@ -8,7 +8,15 @@
 
 namespace AppBundle\Logger;
 
+/**
+ * Interface Logger
+ * @package AppBundle\Logger
+ */
 interface Logger
 {
+    /**
+     * @param $message
+     * @return mixed
+     */
     public function log($message);
 }

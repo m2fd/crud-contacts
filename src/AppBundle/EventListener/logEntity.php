@@ -11,8 +11,15 @@ namespace AppBundle\EventListener;
 use AppBundle\Entity\Personne;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
+/**
+ * Class logEntity
+ * @package AppBundle\EventListener
+ */
 class logEntity
 {
+    /**
+     * @param LifecycleEventArgs $args
+     */
     public function postPersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
@@ -26,6 +33,9 @@ class logEntity
         // ... do something with the Product
     }
 
+    /**
+     * @param LifecycleEventArgs $args
+     */
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();

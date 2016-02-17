@@ -4,6 +4,10 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class CityControllerTest
+ * @package AppBundle\Tests\Controller
+ */
 class CityControllerTest extends WebTestCase
 {
     /*

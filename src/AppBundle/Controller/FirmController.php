@@ -40,6 +40,8 @@ class FirmController extends Controller
      *
      * @Route("/new", name="firm_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -66,6 +68,8 @@ class FirmController extends Controller
      *
      * @Route("/{id}", name="firm_show")
      * @Method("GET")
+     * @param Firm $firm
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Firm $firm)
     {
@@ -82,6 +86,9 @@ class FirmController extends Controller
      *
      * @Route("/{id}/edit", name="firm_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param Firm $firm
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Firm $firm)
     {
@@ -109,6 +116,9 @@ class FirmController extends Controller
      *
      * @Route("/{id}", name="firm_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param Firm $firm
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, Firm $firm)
     {

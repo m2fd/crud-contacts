@@ -39,6 +39,8 @@ class CityController extends Controller
      *
      * @Route("/new", name="city_new")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
@@ -65,6 +67,8 @@ class CityController extends Controller
      *
      * @Route("/{id}", name="city_show")
      * @Method("GET")
+     * @param City $city
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(City $city)
     {
@@ -81,6 +85,9 @@ class CityController extends Controller
      *
      * @Route("/{id}/edit", name="city_edit")
      * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param City $city
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, City $city)
     {
@@ -108,6 +115,9 @@ class CityController extends Controller
      *
      * @Route("/{id}", name="city_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param City $city
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, City $city)
     {
@@ -135,7 +145,6 @@ class CityController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('city_delete', array('id' => $city->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class CountryType
+ * @package AppBundle\Form
+ */
 class CountryType extends AbstractType
 {
     /**
