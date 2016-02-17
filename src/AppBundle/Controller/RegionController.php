@@ -2,17 +2,18 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Region;
-use AppBundle\Form\RegionType;
 
 /**
  * Region controller.
  *
  * @Route("/region")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class RegionController extends Controller
 {
@@ -21,6 +22,7 @@ class RegionController extends Controller
      *
      * @Route("/", name="region_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction()
     {

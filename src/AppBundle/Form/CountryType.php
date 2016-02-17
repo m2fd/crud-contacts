@@ -10,7 +10,7 @@ class CountryType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,14 +18,14 @@ class CountryType extends AbstractType
             ->add('name')
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Country'
+            'data_class' => 'AppBundle\Entity\Country',
         ));
     }
 }

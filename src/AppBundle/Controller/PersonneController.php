@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Personne;
 
-
 /**
  * Personne controller.
  *
@@ -27,7 +26,6 @@ class PersonneController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $personnes = $em->getRepository('AppBundle:Personne')->findAll();
-
 
         return $this->render('personne/index.html.twig', array(
             'personnes' => $personnes,
@@ -51,7 +49,7 @@ class PersonneController extends Controller
             $em->persist($personne);
             $em->flush();
 
-            $this->sendMail('new',$personne);
+            $this->sendMail('new', $personne);
 
             return $this->redirectToRoute('personne_show', array('id' => $personne->getId()));
         }
@@ -64,20 +62,20 @@ class PersonneController extends Controller
 
     /**
      * @param Personne $personne
-     *
-     *
      */
-    public function sendMail(String $action,Personne $personne){
-
+    public function sendMail(String $action, Personne $personne)
+    {
         $mailer = $this->get('mailer');
         #$mailer->setMailer('smtp');
         #$mailer->send('no-reply@localhost', $personne->getEmail(),  'Information: '.$action,
         #    'A new user named'.$personne->getFirstname()." ".$personne->getLastname());
         $template = 'Emails/newuser.html.twig';
 
-        if ($action=="edit")$template='Emails/edituser.html.twig';
+        if ($action == 'edit') {
+            $template = 'Emails/edituser.html.twig';
+        }
 
-         $message = \Swift_Message::newInstance()
+        $message = \Swift_Message::newInstance()
              ->setSubject('Information: '.$action)
              ->setFrom('no-reply@localhost')
              ->setTo('user@localhost')
@@ -85,13 +83,13 @@ class PersonneController extends Controller
                  $this->renderView(
                      // app/Resources/views/Emails/registration.html.twig
                      $template,
-                     array('name' => $personne->getFirstname()." ".$personne->getLastname(),
+                     array('name' => $personne->getFirstname().' '.$personne->getLastname(),
                          'city' => $personne->getCity(),
                          'firm' => $personne->getFirm(),
                          'bdate' => $personne->getBirthDate()->format('d/m/Y'),
                          'status' => $personne->getNamedStatus(),
-                         'phone'=> $personne->getTelephone(),
-                         'website' =>$personne->getWebSite()
+                         'phone' => $personne->getTelephone(),
+                         'website' => $personne->getWebSite(),
                          )
                  ),
                  'text/html'
@@ -130,17 +128,16 @@ class PersonneController extends Controller
         $editForm = $this->createForm('AppBundle\Form\PersonneType', $personne);
         $editForm->handleRequest($request);
 
-        dump($this->container,$personne);
+        dump($this->container, $personne);
 
-        $logger->addDebug("form is valid: ".($editForm->isValid()));
+        $logger->addDebug('form is valid: '.($editForm->isValid()));
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-
             // data is an array with "name", "email", and "message" keys
             $data = $editForm->getData();
-            $logger->addDebug("req post Status: ".$request->request->get('personne[status]'));
-            $logger->addDebug("req get data: ".$data);
+            $logger->addDebug('req post Status: '.$request->request->get('personne[status]'));
+            $logger->addDebug('req get data: '.$data);
 
             #$personne->setStatus($request->request->get('personne[status]'));
 
@@ -148,7 +145,7 @@ class PersonneController extends Controller
             $em->persist($personne);
             $em->flush();
 
-            $this->sendMail('edit',$personne);
+            $this->sendMail('edit', $personne);
 
             #return $this->redirectToRoute('personne_edit', array('id' => $personne->getId()));
             return $this->redirectToRoute('personne_index', array('id' => $personne->getId()));

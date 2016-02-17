@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Country
+ * Country.
  *
  * @ORM\Table(name="country")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Entity\CountryRepository")
@@ -31,7 +31,6 @@ class Country
      */
     private $name;
 
-
     /**
      * @var string
      * @ORM\OneToMany(targetEntity="Region", mappedBy="country")
@@ -40,15 +39,16 @@ class Country
 
     public function __construct()
     {
-        $this->regions=new ArrayCollection();
+        $this->regions = new ArrayCollection();
     }
 
-    public function __toString(){
-    return $this->getName();
-}
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -58,7 +58,7 @@ class Country
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -72,7 +72,7 @@ class Country
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -81,11 +81,8 @@ class Country
         return $this->name;
     }
 
-
-
-
     /**
-     * Add region
+     * Add region.
      *
      * @param \AppBundle\Entity\Region $region
      *
@@ -99,7 +96,7 @@ class Country
     }
 
     /**
-     * Remove region
+     * Remove region.
      *
      * @param \AppBundle\Entity\Region $region
      */
@@ -109,7 +106,7 @@ class Country
     }
 
     /**
-     * Get regions
+     * Get regions.
      *
      * @return \Doctrine\Common\Collections\Collection
      */

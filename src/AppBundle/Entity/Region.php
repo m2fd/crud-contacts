@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Region
+ * Region.
  *
  * @ORM\Table(name="region")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RegionRepository")
@@ -37,7 +37,6 @@ class Region
      */
     private $country;
 
-
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\City", mappedBy="region")
      */
@@ -48,11 +47,12 @@ class Region
         $this->cities = new ArrayCollection();
     }
 
-    public function __toString(){
+    public function __toString()
+    {
         return $this->getName();
     }
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -62,7 +62,7 @@ class Region
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -76,7 +76,7 @@ class Region
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -86,9 +86,9 @@ class Region
     }
 
     /**
-     * Set countryid
+     * Set countryid.
      *
-     * @param integer $countryid
+     * @param int $countryid
      *
      * @return Region
      */
@@ -100,7 +100,7 @@ class Region
     }
 
     /**
-     * Get countryid
+     * Get countryid.
      *
      * @return int
      */
@@ -110,7 +110,7 @@ class Region
     }
 
     /**
-     * Set country
+     * Set country.
      *
      * @param \AppBundle\Entity\Country $country
      *
@@ -124,7 +124,7 @@ class Region
     }
 
     /**
-     * Get country
+     * Get country.
      *
      * @return \AppBundle\Entity\Country
      */
@@ -134,7 +134,7 @@ class Region
     }
 
     /**
-     * Add city
+     * Add city.
      *
      * @param \AppBundle\Entity\City $city
      *
@@ -148,7 +148,7 @@ class Region
     }
 
     /**
-     * Remove city
+     * Remove city.
      *
      * @param \AppBundle\Entity\City $city
      */
@@ -158,7 +158,7 @@ class Region
     }
 
     /**
-     * Get cities
+     * Get cities.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -166,5 +166,4 @@ class Region
     {
         return $this->cities;
     }
-
 }

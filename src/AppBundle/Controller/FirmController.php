@@ -2,17 +2,18 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Firm;
-use AppBundle\Form\FirmType;
 
 /**
  * Firm controller.
  *
  * @Route("/firm")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class FirmController extends Controller
 {
@@ -21,6 +22,7 @@ class FirmController extends Controller
      *
      * @Route("/", name="firm_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction()
     {

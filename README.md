@@ -48,3 +48,12 @@ L'implémentation des fonctionnalités suivantes sera un plus :
 
 Note : ni la qualité technique ni l'aspect graphique de la partie front (HTML, CSS, JS) ne sera prise en compte dans la notation... Pas la peine d'y passer du temps.
 
+## Mise en place et configuration:
+
+###creation de la base de donnée:
+    php bin/console doctrine:database:drop --force
+    php bin/console doctrine:database:create
+
+###creation de l'utilisateur admin par défault
+    php bin/console fos:user:create user user@localhosrt a
+    php bin/console fos:user:create user --super-admin

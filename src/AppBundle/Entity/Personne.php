@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: user
  * Date: 15/01/16
- * Time: 15:08
+ * Time: 15:08.
  */
 
 namespace AppBundle\Entity;
@@ -11,7 +11,6 @@ namespace AppBundle\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\Date;
-
 
 /**
  * Entity of personne, main object of the address book. it has links to other object through a relationnal database
@@ -24,7 +23,7 @@ use Symfony\Component\Validator\Constraints\Date;
 class Personne
 {
     /**
-     * Id of class
+     * Id of class.
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -59,7 +58,6 @@ class Personne
      */
     protected $city;
 
-
     protected $adr_id;
 
     /**
@@ -74,7 +72,7 @@ class Personne
     protected $email;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="telephone", type="integer", length=10)
      */
@@ -109,14 +107,15 @@ class Personne
      */
     protected $status;
 
-    public function __toString(){
-        return $this->getLastname()." ".$this->getFirstname();
+    public function __toString()
+    {
+        return $this->getLastname().' '.$this->getFirstname();
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -124,7 +123,7 @@ class Personne
     }
 
     /**
-     * Set firstname
+     * Set firstname.
      *
      * @param string $firstname
      *
@@ -138,7 +137,7 @@ class Personne
     }
 
     /**
-     * Get firstname
+     * Get firstname.
      *
      * @return string
      */
@@ -148,7 +147,7 @@ class Personne
     }
 
     /**
-     * Set lastname
+     * Set lastname.
      *
      * @param string $lastname
      *
@@ -162,7 +161,7 @@ class Personne
     }
 
     /**
-     * Get lastname
+     * Get lastname.
      *
      * @return string
      */
@@ -172,7 +171,7 @@ class Personne
     }
 
     /**
-     * Set birthDate
+     * Set birthDate.
      *
      * @param string $birthDate
      *
@@ -180,13 +179,13 @@ class Personne
      */
     public function setBirthDate($birthDate)
     {
-        $this->birthDate = $birthDate ;
+        $this->birthDate = $birthDate;
 
         return $this;
     }
 
     /**
-     * Get birthDate
+     * Get birthDate.
      *
      * @return string
      */
@@ -196,7 +195,7 @@ class Personne
     }
 
     /**
-     * Set city
+     * Set city.
      *
      * @param \AppBundle\Entity\City $city
      *
@@ -210,7 +209,7 @@ class Personne
     }
 
     /**
-     * Get city
+     * Get city.
      *
      * @return \AppBundle\Entity\City
      */
@@ -220,7 +219,7 @@ class Personne
     }
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
      *
@@ -234,7 +233,7 @@ class Personne
     }
 
     /**
-     * Get email
+     * Get email.
      *
      * @return string
      */
@@ -244,9 +243,9 @@ class Personne
     }
 
     /**
-     * Set telephone
+     * Set telephone.
      *
-     * @param integer $telephone
+     * @param int $telephone
      *
      * @return Personne
      */
@@ -258,9 +257,9 @@ class Personne
     }
 
     /**
-     * Get telephone
+     * Get telephone.
      *
-     * @return integer
+     * @return int
      */
     public function getTelephone()
     {
@@ -268,7 +267,7 @@ class Personne
     }
 
     /**
-     * Set webSite
+     * Set webSite.
      *
      * @param string $webSite
      *
@@ -282,7 +281,7 @@ class Personne
     }
 
     /**
-     * Get webSite
+     * Get webSite.
      *
      * @return string
      */
@@ -292,7 +291,7 @@ class Personne
     }
 
     /**
-     * Set firm
+     * Set firm.
      *
      * @param \AppBundle\Entity\Firm $firm
      *
@@ -306,7 +305,7 @@ class Personne
     }
 
     /**
-     * Get firm
+     * Get firm.
      *
      * @return \AppBundle\Entity\firm
      */
@@ -316,7 +315,7 @@ class Personne
     }
 
     /**
-     * Set status
+     * Set status.
      *
      * @param string $status
      *
@@ -324,15 +323,14 @@ class Personne
      */
     public function setStatus(string $status)
     {
-
-         if (!in_array($status, array("1","2"))) {
-            throw new \InvalidArgumentException("Invalid status, expected 1 or 2, got ".$status);
+        if (!in_array($status, array('1', '2'))) {
+            throw new \InvalidArgumentException('Invalid status, expected 1 or 2, got '.$status);
         }
         $this->status = $status;
     }
 
     /**
-     * Get status
+     * Get status.
      *
      * @return string
      */
@@ -342,21 +340,21 @@ class Personne
     }
 
     /**
-     * Get status
+     * Get status.
      *
      * @return string
      */
     public function getNamedStatus()
     {
-        switch($this->status){
-            case "1":
+        switch ($this->status) {
+            case '1':
                 return self::STATUS_PART;
                 break;
-            case "2":
+            case '2':
                 return self::STATUS_PRO;
             break;
         };
+
         return 'Not defined';
     }
-
 }

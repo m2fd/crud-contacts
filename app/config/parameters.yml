@@ -7,13 +7,6 @@ parameters:
     database_password: root
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: ~
-    mailer_password: ~
-    port: 25
-    encryption: ~
-    auth_mode: ~
-    spool:
-            type:                 file
-            path:                 '%kernel.cache_dir%/swiftmailer/spool'
+    mailer_user: null
+    mailer_password: null
     secret: 4fa4a1052eeceb5ab19d889211cf88ba4b01eb71
-

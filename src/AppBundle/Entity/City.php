@@ -5,9 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
- * City
+ * City.
  *
  * @ORM\Table(name="city")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CityRepository")
@@ -31,7 +30,6 @@ class City
      */
     private $name;
 
-
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Region", inversedBy="cities")
      * @ORM\JoinColumn(name="fk_region_id", referencedColumnName="id")
@@ -43,13 +41,13 @@ class City
      */
     protected $personnes;
 
-
-    public function __toString(){
+    public function __toString()
+    {
         return $this->getName();
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -59,7 +57,7 @@ class City
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -73,7 +71,7 @@ class City
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -83,7 +81,7 @@ class City
     }
 
     /**
-     * Set region
+     * Set region.
      *
      * @param \AppBundle\Entity\Region $region
      *
@@ -97,7 +95,7 @@ class City
     }
 
     /**
-     * Get region
+     * Get region.
      *
      * @return \AppBundle\Entity\Region
      */
