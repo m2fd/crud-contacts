@@ -10,7 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Firm;
 
 /**
- * Firm controller.
+ * Access allowed for users with ROLE_ADMIN
+ *
+ * CRUD controller for Firm entity
  *
  * @Route("/firm")
  * @Security("has_role('ROLE_ADMIN')")

@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
  * Class PersonneType
+ *
+ * Form fields definition
  * @package AppBundle\Form
  */
 class PersonneType extends AbstractType

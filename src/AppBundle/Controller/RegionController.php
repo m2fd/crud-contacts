@@ -10,7 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Region;
 
 /**
- * Region controller.
+ * Access allowed for users with ROLE_ADMIN
+ *
+ * CRUD controller for User entity
  *
  * @Route("/region")
  * @Security("has_role('ROLE_ADMIN')")

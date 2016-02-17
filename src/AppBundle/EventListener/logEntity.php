@@ -13,6 +13,9 @@ use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
 /**
  * Class logEntity
+ *
+ * Not used as it never worked. Planned us was to log entity status and modification to debug.
+ *
  * @package AppBundle\EventListener
  */
 class logEntity

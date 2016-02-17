@@ -7,7 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class DefaultController
+ * Access allowed for all users logged, not logged, ROLE\_USER, ROLE\_ADMIN
+ *
+ * default route to index
+ *
  * @package AppBundle\Controller
  */
 class DefaultController extends Controller

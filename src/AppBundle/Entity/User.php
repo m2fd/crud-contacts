@@ -13,6 +13,8 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * User: define access information, roles, status (active,inactive), password, email.
+ *
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */

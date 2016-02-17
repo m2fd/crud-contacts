@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Country.
+ * Firm object to define a firm where to contact is working. (one to many, unidirectionnal)
  *
  * @ORM\Table(name="firm")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Entity\CountryRepository")

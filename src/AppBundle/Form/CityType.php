@@ -8,6 +8,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class CityType
+ *
+ * Form fields definition
+ *
  * @package AppBundle\Form
  */
 class CityType extends AbstractType

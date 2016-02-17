@@ -8,6 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class RegionType
+ *
+ * Form fields definition
  * @package AppBundle\Form
  */
 class RegionType extends AbstractType

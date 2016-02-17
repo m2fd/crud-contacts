@@ -10,10 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Country;
 
 /**
- * Country controller.
+ *
+ * Access allowed for users with ROLE_ADMIN
+ *
+ * CRUD controller for Country entity
  *
  * @Route("/country")
  * @Security("has_role('ROLE_ADMIN')")
+ *
  */
 class CountryController extends Controller
 {

@@ -8,6 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class FirmType
+ *
+ * Form fields definition
  * @package AppBundle\Form
  */
 class FirmType extends AbstractType

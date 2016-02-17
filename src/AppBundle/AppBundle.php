@@ -6,9 +6,10 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Class AppBundle
- * @package AppBundle
  *
- * This bundle is an adress book with a loggued controled access.
+ * This bundle is an address book with a controlled access throughout the session according to credentials provided.
+ *
+ * @package AppBundle
  */
 class AppBundle extends Bundle
 {

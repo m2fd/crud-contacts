@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\Date;
 
 /**
- * Entity of personne, main object of the address book. it has links to other object through a relationnal database
+ * Entity of personne, main object of the address book. it has links to other object through a relational database
  * defined in the code (ORM annotation). Also expected values, or validation conditions are defined with Assert
  * annotation. In consequence, getter and setter are very simple.
  *

@@ -8,6 +8,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class CountryType
+ *
+ * Form fields definition
+ *
  * @package AppBundle\Form
  */
 class CountryType extends AbstractType

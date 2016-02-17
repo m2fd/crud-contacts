@@ -16,7 +16,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class UserController
+ *
+ * Access allowed for users with ROLE_ADMIN
+ *
+ * CRUD controller for User entity
  * @package AppBundle\Controller
  */
 class UserController extends Controller

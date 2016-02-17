@@ -35,7 +35,7 @@ L'application devra :
 
     Respecter le patron de conception Model-View-Controller (MVC)
     Utiliser tant que possible les fonctionnalités introduites avec PHP-7 (scalar type hint, return type, nouveaux opérateurs)
-    Respecter les conventions PSR-4, PSR-1 et PSR-2
+    Respecter les conventions PSR-4, PSR-1 et PSR-2                                                
     Disposer d'une PHPdoc de qualité
     La liste devra être paginée
     Envoyer un email à l'administrateur du site lorsqu'un nouveau contact est ajouté (attention au respect de MVC !)            envoi a user@localhost
@@ -55,5 +55,14 @@ Note : ni la qualité technique ni l'aspect graphique de la partie front (HTML, 
     php bin/console doctrine:database:create
 
 ###creation de l'utilisateur admin par défault
-    php bin/console fos:user:create user user@localhosrt a
+    php bin/console fos:user:create user user@localhost a
     php bin/console fos:user:create user --super-admin
+
+ps: swiftmailer est configuré pour fonctionner avec un mailer smtp local.
+ps2: doctrine est configuré pour se connecter sur une bdd mysql local nommée contacts
+
+### Génération / consultation de la documentation
+
+php sami.phar update app/config/samiconf.php
+
+php bin/console server:run --docroot build

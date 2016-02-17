@@ -10,7 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\City;
 
 /**
- * City controller.
+ * Access allowed for users with ROLE_ADMIN
+ *
+ * CRUD controller for City entity
  *
  * @Route("/city")
  * @Security("has_role('ROLE_ADMIN')")

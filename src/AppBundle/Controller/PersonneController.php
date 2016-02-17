@@ -10,10 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Personne;
 
 /**
- * Personne controller.
+ * Access allowed for users with ROLE_ADMIN, and ROLE_USER
+ *
+ * CRUD controller for personne entity
  *
  * @Route("/personne")
  * @Security("has_role('ROLE_USER')")
+
  */
 class PersonneController extends Controller
 {
