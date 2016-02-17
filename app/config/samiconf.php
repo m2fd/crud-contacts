@@ -18,4 +18,8 @@ $iterator = Finder::create()
     ->in('src/AppBundle/')
 ;
 
-return new Sami($iterator);
+return new Sami($iterator, array(
+    'title'                => 'CRUD Contacts',
+    'build_dir'            => __DIR__.'/../../doc',
+    'cache_dir'            => __DIR__.'/../../cache')
+);

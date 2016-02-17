@@ -65,4 +65,4 @@ ps2: doctrine est configuré pour se connecter sur une bdd mysql local nommée c
 
 php sami.phar update app/config/samiconf.php
 
-php bin/console server:run --docroot build
+php bin/console server:run --docroot doc -p 8001
